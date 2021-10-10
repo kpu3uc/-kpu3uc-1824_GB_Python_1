@@ -61,10 +61,7 @@ def num_translate_adv(num: str):
         # print(i[0])
         if num == i[0]:
             return i[1]
-
-    for i in dic.items():
-        # print(i[0])
-        if num == i[1]:
+        elif num == i[1]:
             return i[0]
 
 
