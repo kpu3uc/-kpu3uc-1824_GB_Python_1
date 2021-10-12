@@ -11,6 +11,7 @@ import requests
 import sys
 from pyquery import PyQuery as pq
 from lxml import etree
+from datetime import date
 
 
 URL = 'http://www.cbr.ru/scripts/XML_daily.asp'
@@ -27,11 +28,13 @@ def send_request() -> requests.Response:
 
 def extract_data():
     """Извлекает данные из соответствующего тега и возвращает список string значений"""
-    tag1, tag2 = "CharCode", "Value"
+    # tag1, tag2 = "CharCode", "Value"
     res = send_request()
     main_root = pq(etree.fromstring(res.content))
     curs_val = main_root.pop()
-    return [curs_val.xpath(f'//Valute/{tag1}/text()'), curs_val.xpath(f'//Valute/{tag2}/text()')]
+    # print(curs_val.attrib["Date"])
+    return [curs_val.xpath(f'//Valute/{"CharCode"}/text()'), curs_val.xpath(f'//Valute/{"Value"}/text()'),
+            curs_val.attrib["Date"]]
 
 
 # if __name__ == '__main__':
@@ -48,19 +51,25 @@ def currency_rates(code: str):
     использует http://www.cbr.ru/scripts/XML_daily.asp
     :return:
     """
-    mm, nn = extract_data()
+    mm, nn, oo = extract_data()
     ii = 0
+    oo = oo.split(".")
+    oo.reverse()
+    oo = "-".join(oo)
     while ii < len(mm):
         # print(mm[ii], nn[ii])
         if code.upper() == mm[ii]:
-            return nn[ii]
+            rr = nn[ii].split(",")
+            rr = ".".join(rr)
+            return float(rr), date.fromisoformat(oo)
         ii += 1
     #     curr_dic = {ii: nn}
     #     print(curr_dic)
 
 
 # print(extract_data())
-# i, n = extract_data()
-# print(i, n)
+# i, n, o = extract_data()
+# print(i, n, o)
+a = currency_rates("cad")
 print("usd", currency_rates("usd"))
 print("EUR", currency_rates("EUR"))
