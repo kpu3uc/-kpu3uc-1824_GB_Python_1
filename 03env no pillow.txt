@@ -1,0 +1,2 @@
+(base) C:\Users\освобождение>pip show pillow
+WARNING: Package(s) not found: pillow
