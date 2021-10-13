@@ -8,7 +8,7 @@
 # от того, в каком регистре был передан аргумент? В качестве примера выведите курсы доллара и евро.
 
 import requests
-import sys
+# import sys
 from pyquery import PyQuery as pq
 from lxml import etree
 from datetime import date
@@ -22,7 +22,7 @@ def send_request() -> requests.Response:
     response = requests.get(URL, timeout=2)
     if not response.ok:
         print(f'Запрос не успешен: {response.status_code}')
-        sys.exit(0)
+        # sys.exit(0)
     return response
 
 
@@ -43,24 +43,21 @@ def extract_data():
 #     pprint(name_valutes)
 
 
-def currency_rates(code: str):
+def currency_rates(code: str):  # -> price:float, date:date
 
     """
     Функция currency_rates(), принимает в качестве аргумента код валюты (например, USD, EUR, GBP, ...) и
     возвращает курс этой валюты по отношению к рублю. Использует библиотеку requests. В качестве API
     использует http://www.cbr.ru/scripts/XML_daily.asp
-    :return:
+    
     """
     mm, nn, oo = extract_data()
     ii = 0
-    oo = oo.split(".")
-    oo.reverse()
-    oo = "-".join(oo)
+    oo = '-'.join(oo.split('.')[::-1])
     while ii < len(mm):
         # print(mm[ii], nn[ii])
         if code.upper() == mm[ii]:
-            rr = nn[ii].split(",")
-            rr = ".".join(rr)
+            rr = nn[ii].replace(",", ".")
             return float(rr), date.fromisoformat(oo)
         ii += 1
     #     curr_dic = {ii: nn}
@@ -70,6 +67,7 @@ def currency_rates(code: str):
 # print(extract_data())
 # i, n, o = extract_data()
 # print(i, n, o)
-a = currency_rates("cad")
-print("usd", currency_rates("usd"))
-print("EUR", currency_rates("EUR"))
+a, b = "usd", "EUR"
+c = currency_rates(a)
+print(a, currency_rates(a))
+print(b, currency_rates(b))
