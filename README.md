@@ -1,1 +1,0 @@
-# -kpu3uc-1824_GB_Python_1
