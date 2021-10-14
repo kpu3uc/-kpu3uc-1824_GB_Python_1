@@ -1,9 +1,7 @@
 from utils import currency_rates
+import sys
 
-print("test")
-
-
-if __name__ == '__main__':
-    import sys
-
-    exit(print(currency_rates(str(sys.argv))))
+if len(sys.argv) == 2:
+    exit(currency_rates(sys.argv[1]))
+else:
+    print(currency_rates(input()))
