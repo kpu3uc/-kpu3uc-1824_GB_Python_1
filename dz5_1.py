@@ -1,6 +1,7 @@
 
 
 def odd_numbers(max_odd):
+    """генератор нечетных числе от одного до max_odd"""
     for _ in range(1, max_odd + 1, 2):
         yield _
 
