@@ -6,12 +6,12 @@ def odd_numbers(max_odd):
 
 
 # print(list(odd_numbers(16)))
-test = odd_numbers(10)
-print(next(test))
-print(next(test))
-print(next(test))
-print(next(test))
-print(next(test))
-print(next(test))
-print(next(test))
-print(next(test))
+# test = odd_numbers(10)
+# print(next(test))
+# print(next(test))
+# print(next(test))
+# print(next(test))
+# print(next(test))
+
+for _ in odd_numbers(10):
+    print(_)
