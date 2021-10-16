@@ -5,18 +5,32 @@
 # result = [23, 1, 3, 10, 4, 11]
 # Подсказка: напишите сначала решение «в лоб». Потом подумайте об оптимизации.
 from time import perf_counter
+from numpy import random
 
-src = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
+# src = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
+src = [random.randint(100) for _ in range(1, 1000)]
+# for _ in
 start = perf_counter()
-result = [_ for _ in src if src.count(_) == 1]
-print(result, perf_counter() - start)
+result = [_ for _ in src if src.count(_) == 1]  # решение "в лоб": добавляется каждый элемент которого в списке
+print(result, perf_counter() - start)           # только одна штука
 
 start = perf_counter()
 set_src = set()
 result = []
-for _ in src:
-    if _ not in set_src:
-        set_src.add(_)
-        if src.count(_) == 1:
-            result.append(_)
+for _ in src:                                   # второй вариант
+    if _ not in set_src:                        # если элемент ещё не встречался в множестве, тогда:
+        set_src.add(_)                          # добавим в множество
+        if src.count(_) == 1:                   # узнаем, он один такой в списке
+            result.append(_)                    # если да - добавляем, если нет - пропускаем
+print(result, perf_counter() - start)           # если элемент уже есть в множестве, значит делать с ним ничего
+print()                                         # не надо, этот вариант повторяется
+
+start = perf_counter()
+set_src = set()
+result = []
+for __, _ in enumerate(src):                    # третий вариант
+    if _ not in set_src:                        # если элемент ещё не встречался в множестве, тогда:
+        set_src.add(_)                          # добавим в множество
+        if _ not in src[__+1::]:                # узнаём, не встречается ли он в остатке списка
+            result.append(_)                    # если да, не встречается - добавляем
 print(result, perf_counter() - start)
