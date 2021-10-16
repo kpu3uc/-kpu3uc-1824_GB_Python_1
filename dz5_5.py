@@ -7,30 +7,57 @@
 from time import perf_counter
 from numpy import random
 
+# li_ra = 10000
+# li_uni = 100
 # src = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
-src = [random.randint(100) for _ in range(1, 1000)]
-# for _ in
-start = perf_counter()
-result = [_ for _ in src if src.count(_) == 1]  # решение "в лоб": добавляется каждый элемент которого в списке
-print(result, perf_counter() - start)           # только одна штука
 
-start = perf_counter()
-set_src = set()
-result = []
-for _ in src:                                   # второй вариант
-    if _ not in set_src:                        # если элемент ещё не встречался в множестве, тогда:
-        set_src.add(_)                          # добавим в множество
-        if src.count(_) == 1:                   # узнаем, он один такой в списке
-            result.append(_)                    # если да - добавляем, если нет - пропускаем
-print(result, perf_counter() - start)           # если элемент уже есть в множестве, значит делать с ним ничего
-print()                                         # не надо, этот вариант повторяется
 
-start = perf_counter()
-set_src = set()
-result = []
-for __, _ in enumerate(src):                    # третий вариант
-    if _ not in set_src:                        # если элемент ещё не встречался в множестве, тогда:
-        set_src.add(_)                          # добавим в множество
-        if _ not in src[__+1::]:                # узнаём, не встречается ли он в остатке списка
-            result.append(_)                    # если да, не встречается - добавляем
-print(result, perf_counter() - start)
+def test_three(li_ra: int, li_uni: int):
+    """обернул в функцию чтобы потестить разные значения длины списка и количества уникальных значений"""
+    src = [random.randint(100) for _ in range(1, li_ra - li_uni)]
+    # print(src)
+    for _ in range(li_uni):
+        src.insert(random.randint(li_ra), 100 + _)
+    # print(src)
+
+    start = perf_counter()
+    result = [_ for _ in src if src.count(_) == 1]  # решение "в лоб": добавляется каждый элемент которого в списке
+    # print(result, perf_counter() - start)         # только одна штука
+    rez_out1 = (perf_counter() - start)
+
+    start = perf_counter()
+    set_src = set()
+    result = []
+    for _ in src:                                   # второй вариант
+        if _ not in set_src:                        # если элемент ещё не встречался в множестве, тогда:
+            set_src.add(_)                          # добавим в множество
+            if src.count(_) == 1:                   # узнаем, он один такой в списке
+                result.append(_)                    # если да - добавляем, если нет - пропускаем
+    # print(result, perf_counter() - start)         # если элемент уже есть в множестве, значит делать с ним ничего не надо
+    rez_out2 = (perf_counter() - start)
+
+    start = perf_counter()
+    set_src = set()
+    result = []
+    for __, _ in enumerate(src):                    # третий вариант
+        if _ not in set_src:                        # если элемент ещё не встречался в множестве, тогда:
+            set_src.add(_)                          # добавим в множество
+            if _ not in src[__+1::]:                # узнаём, не встречается ли он в остатке списка
+                result.append(_)                    # если да, не встречается - добавляем
+    # print(result, perf_counter() - start)
+    rez_out3 = (perf_counter() - start)
+    print(li_ra, li_uni, rez_out1, rez_out2, rez_out3)
+
+
+test_three(20, 5)          # 20 5 7.099999999982121e-06 1.0499999999996623e-05 1.1200000000016752e-05
+test_three(100, 10)        # 100 10 9.870000000000712e-05 7.139999999999924e-05 8.389999999999787e-05
+test_three(100, 20)        # 100 20 9.290000000000687e-05 7.689999999999086e-05 6.829999999999337e-05
+test_three(500, 20)        # 500 20 0.0022262999999999866 0.0005368000000000039 0.00027080000000001547
+test_three(500, 100)       # 500 100 0.0023041000000000034 0.000893900000000003 0.0005528999999999951
+test_three(1000, 100)      # 1000 100 0.0090557 0.001983700000000005 0.000939300000000004
+test_three(10000, 10)      # 10000 10 0.8846888 0.009719400000000045 0.00274350000000001
+test_three(10000, 100)     # 10000 100 0.8720847999999999 0.017274299999999965 0.007761000000000351
+# test_three(100000, 100)  # 100000 100 87.0976438 0.17234689999999375 0.08213619999999366
+test_three(10, 10)         # 10 10 3.2999999999283602e-06 3.5999999998814758e-06 5.2999999999858716e-06
+test_three(100, 100)       # 100 100 9.320000000001549e-05 0.00010329999999991735 9.61000000001544e-05 - хмммм
+test_three(500, 500)       # 500 500 0.002169399999999877 0.0022131999999999152 0.001553899999999997
