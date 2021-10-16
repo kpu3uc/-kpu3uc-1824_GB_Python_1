@@ -12,7 +12,7 @@ from numpy import random
 # src = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
 
 
-def test_three(li_ra: int, li_uni: int):
+def test_three(li_ra: int, li_uni: int):  # li_ra - количество элементов в списке, li_uni - количество уникальных значений
     """обернул в функцию чтобы потестить разные значения длины списка и количества уникальных значений"""
     src = [random.randint(100) for _ in range(1, li_ra - li_uni)]
     # print(src)
