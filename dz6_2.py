@@ -13,4 +13,6 @@ with open("nginx_logs.txt", encoding="utf-8") as logs:
         if remote_addr in cont:
             cont[remote_addr] += 1
         else:
-            cont = {remote_addr: 1}
+            cont[remote_addr] = 1
+spamer = max(cont, key=cont.get)
+print(f'В конкурсе "заспамь сервак" победил чел с айпи {spamer}, c {cont[spamer]} запросами')  # склонений нет
