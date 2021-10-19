@@ -11,6 +11,22 @@
 # Фрагмент файла с данными о хобби (hobby.csv):
 # скалолазание,охота
 # горные лыжи
+import sys
 
+kompromat = {}
 with open("users.csv", encoding="utf-8") as users, open("hobby.csv", encoding="utf-8") as hobby:
-    fio = users.
+    fio = users.read().split("\n")
+    hob = hobby.read().split("\n")
+# print(fio)
+# print(hob)
+if len(hob) > len(fio):
+    sys.exit(1)
+_ = 0
+while _ < len(fio):
+    if _ < len(hob):
+        kompromat[fio[_]] = hob[_]
+        _ += 1
+    else:
+        kompromat[fio[_]] = None
+        _ += 1
+print(kompromat)
