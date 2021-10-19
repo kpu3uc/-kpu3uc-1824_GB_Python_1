@@ -21,12 +21,9 @@ with open("users.csv", encoding="utf-8") as users, open("hobby.csv", encoding="u
 # print(hob)
 if len(hob) > len(fio):
     sys.exit(1)
+
 _ = 0
 while _ < len(fio):
-    if _ < len(hob):
-        kompromat[fio[_]] = hob[_]
-        _ += 1
-    else:
-        kompromat[fio[_]] = None
-        _ += 1
+    kompromat[fio[_]] = hob[_] if _ < len(hob) else None  # Тернарный оператор o_O
+    _ += 1
 print(kompromat)
