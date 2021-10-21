@@ -7,8 +7,9 @@ with open('bakery.csv', 'r', encoding='utf-8') as bakery:
         arg1 = int(sys.argv[1])
         _ = 1
         while _ < arg1:  # пропускаем нужное количество строк
-            line = bakery.readline()
-            if not line:
+            # line = bakery.readline()
+            # if not line:
+            if not bakery.readline():
                 break
             _ += 1
         while True:  # выводим оставшиеся строки
@@ -20,8 +21,9 @@ with open('bakery.csv', 'r', encoding='utf-8') as bakery:
         arg1, arg2 = int(sys.argv[1]), int(sys.argv[2])
         _ = 1
         while _ < arg1:  # пропускаем нужное количество строк
-            line = bakery.readline()
-            if not line:
+            # line = bakery.readline()
+            # if not line:
+            if not bakery.readline():
                 break
             _ += 1
         while _ <= arg2:  # выводим нужное количество строк
