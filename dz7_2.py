@@ -34,6 +34,6 @@ with open("config.yaml", encoding="utf-8") as config:
             break
         if not os.path.exists(line):
             if "." in line:
-                open(line, 'a', encoding='utf-8').close()
+                open(line, 'a').close()
             else:
                 os.mkdir(line)
