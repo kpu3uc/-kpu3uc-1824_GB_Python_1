@@ -29,11 +29,11 @@ import os
 
 with open("config.yaml", encoding="utf-8") as config:
     while True:
-        line = config.readline().replace('\n', '')
-        if not line:
+        line = config.readline().replace('\n', '')  # правила нашего config.yaml говорят что там нет пустых строк
+        if not line:                                # и неправильных данных :pokerface:
             break
         if not os.path.exists(line):
-            if "." in line:
-                open(line, 'a').close()
+            if "." in line:                         # правила нашего config.yaml говорят что:
+                open(line, 'a').close()             # файлы у нас с точками в названии
             else:
-                os.mkdir(line)
+                os.mkdir(line)                      # папки у нас без точек в названии
