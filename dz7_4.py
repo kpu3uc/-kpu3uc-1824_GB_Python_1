@@ -13,7 +13,6 @@ import os
 import random
 import string
 from copy import copy
-# print(os.walk("some_data"))
 
 
 def grs(length):
@@ -54,7 +53,7 @@ def fofile_gen(path: str, folders: int, files: int, size_min=1, size_max=10000):
 
 
 target_folder = "some_data"
-fofile_gen(target_folder, 10, 10)
+# fofile_gen(target_folder, 10, 10)
 
 
 result = counter(target_folder)
