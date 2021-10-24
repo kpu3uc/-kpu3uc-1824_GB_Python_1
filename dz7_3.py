@@ -16,7 +16,23 @@
 # import dz7_2
 # dz7_2
 import os
+from shutil import copy
 
 project = "my_project"
-if not os.path.exists(project):
+if not os.path.exists(project):  # проекта нет - выходим
     exit(1)
+if os.path.exists(project + "/templates"):  # уже существует папка templates, выходим
+    exit(1)
+# os.mkdir(project + "/templates")
+for path in os.walk(project):  # для каждой папки в проекте
+    # print(path)
+    if "templates" in path[1]:  # проверяем, есть ли там папка с шабонами
+        # print("catch")
+        for copy_path in os.walk(path[0] + "\\templates"):
+            # print("copy", copy_path)
+            for file in copy_path[2]:
+                trash, temp_name = path[0].split("\\")
+                temp_path = project + "\\templates\\" + temp_name
+                # print("temp_path", temp_path)
+                os.makedirs(temp_path) if not os.path.exists(temp_path) else ...
+                copy(copy_path[0] + "\\" + file, temp_path)
