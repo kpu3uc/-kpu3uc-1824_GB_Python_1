@@ -70,9 +70,3 @@ for _ in result:
             break
         a *= 10
 print(final_dict)
-
-
-
-
-
-
