@@ -26,7 +26,7 @@ if os.path.exists(project + "/templates"):  # уже существует пап
 # os.mkdir(project + "/templates")
 for path in os.walk(project):  # для каждой папки в проекте
     # print(path)
-    if "templates" in path[1]:  # проверяем, есть ли там папка с шабонами
+    if "templates" in path[1]:  # проверяем, есть ли там папка с шаблонами
         # print("catch")
         for copy_path in os.walk(path[0] + "\\templates"):
             # print("copy", copy_path)
