@@ -25,12 +25,12 @@ def grs(length):
 def counter(path: str):
     """Возвращает список длин файлов в директории"""
     return_data = []
-    for test_file in os.walk(path):
+    for test_folder in os.walk(path):
         # print(test_file)
-        for file in test_file[2]:
+        for file in test_folder[2]:
             # print(file)
             # print(os.stat(test_file[0] + "\\" + file).st_size)
-            return_data.append(os.stat(test_file[0] + "\\" + file).st_size)
+            return_data.append(os.stat(test_folder[0] + "\\" + file).st_size)
             # print(return_data)
     return return_data
 
