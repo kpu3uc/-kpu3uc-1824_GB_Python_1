@@ -15,6 +15,14 @@ import re
 
 
 def email_parse(email_address):
+    """
+    При помощи регулярного выражения извлекает
+    имя пользователя и почтовый домен из email адреса и возвращает их в виде словаря.
+    Если адрес не валиден, выбрасывает исключение ValueError.
+    :param email_address: входящий email на проверку
+    :return: dict {"username": username, "domain": domain}
+    :raise: ValueError(msg)
+    """
     if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$', email_address):
         msg = f'wrong email: {email_address}'
         raise ValueError(msg)
