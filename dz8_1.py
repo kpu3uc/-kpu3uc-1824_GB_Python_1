@@ -16,7 +16,7 @@ import re
 
 def email_parse(email_address):
     if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$', email_address):
-        msg = "wrong email: " + email_address
+        msg = f'wrong email: {email_address}'
         raise ValueError(msg)
     username, domain = email_address.split("@")
     return {"username": username, "domain": domain}
