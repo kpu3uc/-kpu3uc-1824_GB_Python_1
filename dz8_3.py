@@ -44,5 +44,5 @@ def multi_args(x, y, u=1):
     return x * y * u
 
 
-# print(calc_cube(5))
+print(calc_cube(5))
 print(multi_args(3, 4, u=10))
