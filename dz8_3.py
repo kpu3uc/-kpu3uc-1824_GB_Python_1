@@ -16,14 +16,18 @@
 # calc_cube(5: <class 'int'>)
 
 def type_logger(func):
-    print("init")
+    # print("init")
 
     def catcher(*args, **kwargs):
-        print("catcher")
-        with open("log.txt", "a", encoding="utf-8"):
-            ...
-
-        return print(type(*args, **kwargs))
+        # print("catcher")
+        with open("log.txt", "a", encoding="utf-8") as logs:  # замаскировали - в консоль ничего не идёт, пишется в файл
+            logs.write(str(*args, **kwargs))
+            logs.write(": ")
+            logs.write(str(type(*args)))
+            logs.write(" , типа значения функции: ")
+            logs.write(str(type(func(*args, **kwargs))))  # тип значения функции
+            logs.write("\n")
+        return func(*args, **kwargs)
 
     return catcher
 
@@ -33,4 +37,4 @@ def calc_cube(x):
     return x ** 3
 
 
-print(calc_cube(6))
+print(calc_cube(5))
