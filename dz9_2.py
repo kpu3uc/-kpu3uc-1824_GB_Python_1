@@ -18,7 +18,7 @@ class Road:
     """
     __length, __width, __thickness, __mass = int, int, int, int
 
-    def __init__(self, length, width=3, thickness=1, mass=25):
+    def __init__(self, length, width=7.5, thickness=1, mass=25):
         self.__length = length
         self.__width = width
         self.__thickness = thickness
