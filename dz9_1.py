@@ -18,11 +18,11 @@ class TrafficLight:
     def __init__(self, green_time=1):
         self.__color["Green"] = green_time
 
-    def running(self):
+    def running(self, log=False):
         if self.__color.keys() != {"Red", "Yellow", "Green"}:
             raise ValueError("Internal color dict error")
         for keys in self.__color.items():
-            print(keys[0])
+            print(keys[0], keys[1]) if log else print(keys[0])
             time.sleep(keys[1])
 
     def _blue(self):
@@ -30,11 +30,10 @@ class TrafficLight:
 
 
 svetofor = TrafficLight()
-TrafficLight.running(svetofor)
+TrafficLight.running(svetofor, 1)
 
 svetofor5 = TrafficLight(5)
-TrafficLight.running(svetofor5)
-
+svetofor5.running(True)
 svetofor6 = TrafficLight(6)
 svetofor6._blue()
 svetofor6.running()
