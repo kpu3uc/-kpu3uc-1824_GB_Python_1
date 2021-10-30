@@ -13,7 +13,7 @@ import time
 
 class TrafficLight:
     """Светофор"""
-    __color = {"Red": .7, "Yellow": 2, "Green": 1}
+    __color = {"Red": .7, "Yellow": 2, "Green": 1}  # для теста красный у нас .7
 
     def __init__(self, green_time=1):
         self.__color["Green"] = green_time
@@ -25,7 +25,7 @@ class TrafficLight:
             print(keys[0])
             time.sleep(keys[1])
 
-    def blue(self):
+    def _blue(self):
         self.__color["Blue"] = 100500
 
 
@@ -36,5 +36,5 @@ svetofor5 = TrafficLight(5)
 TrafficLight.running(svetofor5)
 
 svetofor6 = TrafficLight(6)
-svetofor6.blue()
+svetofor6._blue()
 svetofor6.running()
