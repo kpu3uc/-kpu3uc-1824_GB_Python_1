@@ -8,7 +8,7 @@
 # При значении скорости свыше 60 (TownCar) и 40 (WorkCar) должно выводиться сообщение о превышении скорости.
 
 class Car:
-    __speed = 0
+    speed = 0
     direction = 0  # 0 - прямо, 1 - налево, 2 - направо
     possible_color = ("white", "black", "red", "green")
     color = possible_color[0]
