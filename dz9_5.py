@@ -25,3 +25,13 @@ class Pencil(Stationery):
 class Handle(Stationery):
     def draw(self):
         print("Рисуем котика")
+
+
+stat = Stationery()
+pen = Pen()
+penc = Pencil()
+han = Handle()
+stat.draw()
+pen.draw()
+penc.draw()
+han.draw()
