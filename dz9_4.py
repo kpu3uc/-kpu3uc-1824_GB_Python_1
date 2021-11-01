@@ -9,7 +9,7 @@
 
 class Car:
     speed = 0
-    direction = 0  # 0 - прямо, 1 - налево, 2 - направо
+    direction = 0  # -90 налево < 0 прямо < 90 направо, в теории это в градусах выворот колёс
     possible_color = ("white", "black", "red", "green")
     color = possible_color[0]
     name = "Car"
@@ -34,10 +34,10 @@ class Car:
         if direction == 0:
             self.direction = direction
             return f'{self.name} не поворачивает'
-        elif direction == 1:
+        elif direction < 0:
             self.direction = direction
             return f"{self.name} поворачивает налево"
-        elif direction == 2:
+        elif direction > 0:
             self.direction = direction
             return f"{self.name} поворачивает направо"
         else:
@@ -52,8 +52,8 @@ class TownCar(Car):
     name = "TownCar"
 
     def show_speed(self):
-        if self.speed <= 40:
-            return self.speed
+        if self.speed <= 60:  # по хорошему это нужно было в классе Car прописать атрибут max_speed, но в задании
+            return self.speed  # требуют переопределить тут
         else:
             return f"{self.speed}, превышаем"
 
@@ -63,17 +63,27 @@ class SportCar(Car):
 
 
 class WorkCar(Car):
-    pass
+    possible_color = ("white", "black")
+
+    def show_speed(self):
+        if self.speed <= 40:
+            return self.speed
+        else:
+            return f"{self.speed}, превышаем"
 
 
 class PoliceCar(Car):
-    pass
+    _is_police = True
+    possible_color = ("white", "black", "blue")
 
 
 print()
 test_car = Car("Пусечка", 2)
 print(test_car.name, test_car.color, test_car.show_speed())
-print(test_car.go(), test_car.turn(1))
+print(test_car.go(), test_car.turn(-10))
 test_town_car = TownCar("Утипусечка", 6)
-print(test_town_car.go(110), test_town_car.turn(1))
+print(test_town_car.go(110), test_town_car.turn(25))
 print(test_town_car.name, test_town_car.color, test_town_car.show_speed())
+test_work_car = WorkCar("Чепушонок", 1)
+print(test_work_car.go(220), test_work_car.turn(0))
+print(test_work_car.name, test_work_car.color, test_work_car.show_speed())
