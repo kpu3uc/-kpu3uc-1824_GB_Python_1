@@ -34,7 +34,7 @@ svetofor = TrafficLight()
 TrafficLight.running(svetofor, 1)
 
 svetofor5 = TrafficLight(5)
-svetofor5.running(True)
+svetofor5.running(False)
 svetofor6 = TrafficLight(6)
 svetofor6._blue()
 svetofor6.running()
