@@ -47,5 +47,6 @@ print(test_matrix + test_matrix2)
 print(test_matrix + Matrix([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]))
 test_matrix3 = test_matrix + test_matrix2
 print(test_matrix3)
-test_matrix4 = Matrix(["один", "два", "три", "четыре", [5, 6, 7, 8], [9, 10, 11, 12]])
+test_matrix4 = Matrix([["один", "два", "три", "четыре"], [5, 6, 7, 8], [9, 10, 11, 12]])
 print(test_matrix4)
+# print(test_matrix + test_matrix4)
