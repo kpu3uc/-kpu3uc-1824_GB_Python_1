@@ -17,19 +17,21 @@
 # Результатом сложения должна быть новая матрица.
 # Подсказка: сложение элементов матриц выполнять поэлементно.
 # Первый элемент первой строки первой матрицы складываем с первым элементом первой строки второй матрицы и пр.
+from __future__ import annotations
+
 
 class Matrix:
 
     def __init__(self, matrix):
         self.matrix = matrix
 
-    def __str__(self):
+    def __str__(self) -> str:
         ret = ""
         for row in self.matrix:
             ret += f'| {" ".join(map(str, row))} |\n'
         return ret  # [:-1] - дело вкуса
 
-    def __add__(self, other):
+    def __add__(self, other) -> Matrix:
         if not isinstance(other, Matrix):
             raise ValueError("not Matrix")
         ret = []
