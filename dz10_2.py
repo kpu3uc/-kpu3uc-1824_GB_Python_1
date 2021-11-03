@@ -17,8 +17,9 @@ class Clothes(ABC):
 
     @abstractmethod
     def formula(self):
-        return ValueError
+        ...
 
+    @property
     def calculation(self):
         return self.formula()
 
@@ -34,6 +35,6 @@ class Suit(Clothes):
 
 
 coat = Coat("kurtka", 10)
-print(coat.calculation())
+print(coat.calculation)
 suit = Suit("kostum", 10)
-print(suit.calculation())
+print(suit.calculation)
