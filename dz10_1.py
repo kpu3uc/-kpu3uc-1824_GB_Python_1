@@ -31,9 +31,15 @@ class Matrix:
         return ret
 
     def __add__(self, other):
-        pass
+        ret = []
+        for row, other_row in zip(self.matrix, other.matrix):
+            ret.append(list((map(sum, zip(row, other_row)))))
+        return Matrix(ret)
 
 
-test_matrix = Matrix([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
-
-print(test_matrix)
+test_matrix = Matrix([[10, 20, 30, 40], [50, 60, 70, 80], [90, 100, 110, 120]])
+test_matrix2 = Matrix([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+print(test_matrix, test_matrix2, sep="\n")
+print(test_matrix + test_matrix2)
+test_matrix3 = test_matrix + test_matrix2
+print(test_matrix3)
