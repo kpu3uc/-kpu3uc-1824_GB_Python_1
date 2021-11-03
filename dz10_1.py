@@ -22,13 +22,12 @@ class Matrix:
 
     def __init__(self, matrix):
         self.matrix = matrix
-        # print(self.matrix)
 
     def __str__(self):
         ret = ""
         for row in self.matrix:
             ret += f'| {" ".join(map(str, row))} |\n'
-        return ret[:-1]
+        return ret  # [:-1] - дело вкуса
 
     def __add__(self, other):
         if not isinstance(other, Matrix):
@@ -48,3 +47,5 @@ print(test_matrix + test_matrix2)
 print(test_matrix + Matrix([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]))
 test_matrix3 = test_matrix + test_matrix2
 print(test_matrix3)
+test_matrix4 = Matrix(["один", "два", "три", "четыре", [5, 6, 7, 8], [9, 10, 11, 12]])
+print(test_matrix4)
