@@ -6,34 +6,31 @@
 # для костюма(2*H + 0.3). Проверить работу этих методов на реальных данных.
 # Выполнить общий подсчёт расхода ткани. Проверить на практике полученные на этом уроке знания.
 # Реализовать абстрактные классы для основных классов проекта и проверить работу декоратора @property.
-from abc import ABC
+from abc import ABC, abstractmethod
 
 
 class Clothes(ABC):
-    flag = 0
 
     def __init__(self, name: str, vh: int):
         self.name = name
         self.vh = vh
 
+    @abstractmethod
     def formula(self):
-        if self.flag == 1:
-            return self.vh/6.5 + 0.5
-        elif self.flag == 2:
-            return 2*self.vh + 0.3
-        else:
-            return ValueError
+        return ValueError
 
     def calculation(self):
         return self.formula()
 
 
 class Coat(Clothes):
-    flag = 1
+    def formula(self):
+        return self.vh / 6.5 + 0.5
 
 
 class Suit(Clothes):
-    flag = 2
+    def formula(self):
+        return 2 * self.vh + 0.3
 
 
 coat = Coat("kurtka", 10)
