@@ -20,7 +20,7 @@ class Clothes:
         elif self.flag == 2:
             return 2*self.vh + 0.3
         else:
-            return 1
+            return ValueError
 
     def calculation(self):
         return self.formula()
