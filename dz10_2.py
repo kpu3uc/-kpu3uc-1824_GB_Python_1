@@ -8,15 +8,33 @@
 # Реализовать абстрактные классы для основных классов проекта и проверить работу декоратора @property.
 
 class Clothes:
-    def __init__(self, name: str):
+    flag = 0
+
+    def __init__(self, name: str, vh: int):
         self.name = name
+        self.vh = vh
+
+    def formula(self):
+        if self.flag == 1:
+            return self.vh/6.5 + 0.5
+        elif self.flag == 2:
+            return 2*self.vh + 0.3
+        else:
+            return 1
+
+    def calculation(self):
+        return self.formula()
 
 
 class Coat(Clothes):
-    pass
+    flag = 1
 
 
 class Suit(Clothes):
-    pass
+    flag = 2
 
 
+coat = Coat("kurtka", 10)
+print(coat.calculation())
+suit = Suit("kostum", 10)
+print(suit.calculation())
