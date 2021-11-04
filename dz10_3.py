@@ -37,8 +37,8 @@ class Cell:
     def __sub__(self, other) -> Cell:
         if not isinstance(other, Cell):
             raise ValueError("not Cell")
-        if self.count == other.count:
-            raise ValueError("Cells are equal")
+        if self.count <= other.count:
+            raise ValueError("zero or less")
         return Cell(self.count - other.count)
 
     def __mul__(self, other) -> Cell:
@@ -55,4 +55,41 @@ class Cell:
         if not isinstance(other, Cell):
             raise ValueError("not Cell")
         return Cell(self.count // other.count)  # всё равно делим нацело, у нас int
+
+    def make_order(self, row):
+        ret = ""
+        count = self.count
+        while count > row:
+            count -= row
+            ret += f'{"*" * row}\n'
+        ret += f'{"*" * count}'
+        return ret
+
+
+cell1 = Cell(3)
+cell2 = Cell(10)
+cell3 = cell1 + cell2
+print(f'{cell1.count} + {cell2.count} = {cell3.count}')
+print(5, cell3.make_order(5), sep="\n")
+cell3 = cell1 * cell2
+print(f'{cell1.count} * {cell2.count} = {cell3.count}')
+print(11, cell3.make_order(11), sep="\n")
+cell3 = cell1 / cell2
+print(f'{cell1.count} / {cell2.count} = {cell3.count}')
+print(5, cell3.make_order(5), sep="\n")
+cell3 = cell1 // cell2
+print(f'{cell1.count} // {cell2.count} = {cell3.count}')
+print(5, cell3.make_order(5), sep="\n")
+cell3 = cell2 / cell1
+print(f'{cell2.count} / {cell1.count} = {cell3.count}')
+print(2, cell3.make_order(2), sep="\n")
+cell3 = cell2 // cell1
+print(f'{cell2.count} // {cell1.count} = {cell3.count}')
+print(1, cell3.make_order(1), sep="\n")
+# cell3 = cell1 - cell2
+# print(f'{cell1.count} - {cell2.count} = {cell3.count}')
+cell3 = cell2 - cell1
+print(f'{cell2.count} - {cell1.count} = {cell3.count}')
+print(5, cell3.make_order(5), sep="\n")
+print(f'10 + 5 =\n{(Cell(10) + Cell(5)).make_order(5)}')
 
