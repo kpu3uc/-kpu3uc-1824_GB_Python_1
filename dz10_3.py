@@ -92,4 +92,3 @@ cell3 = cell2 - cell1
 print(f'{cell2.count} - {cell1.count} = {cell3.count}')
 print(5, cell3.make_order(5), sep="\n")
 print(f'10 + 5 =\n{(Cell(10) + Cell(5)).make_order(5)}')
-
