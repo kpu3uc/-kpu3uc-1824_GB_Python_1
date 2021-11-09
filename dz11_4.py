@@ -9,18 +9,26 @@ class Warehouse:
 
 
 class OfficeEquipment:
-    pass
+    weight = 1
+    scan = True
+    print = True
 
 
 class Printer(OfficeEquipment):
-    pass
+    weight = 2
+    scan = False
+    print = True
 
 
 class Scanner(OfficeEquipment):
-    pass
+    weight = 3
+    scan = True
+    print = False
 
 
 class Xerox(OfficeEquipment):
-    pass
+    weight = 5
+    scan = False
+    print = True
 
 
