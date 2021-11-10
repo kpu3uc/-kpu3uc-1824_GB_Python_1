@@ -8,7 +8,10 @@ from __future__ import annotations
 class Cotlex:
 
     def __init__(self, cotlex: complex):
-        self.cotlex = cotlex
+        if isinstance(cotlex, complex):
+            self.cotlex = cotlex
+        else:
+            raise TypeError("not complex")
 
     def __add__(self, other: Cotlex):
         if isinstance(other, Cotlex):
