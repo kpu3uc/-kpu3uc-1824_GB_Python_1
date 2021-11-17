@@ -1,0 +1,11 @@
+C:\Users\освобождение>pip show pillow
+Name: Pillow
+Version: 8.2.0
+Summary: Python Imaging Library (Fork)
+Home-page: https://python-pillow.org
+Author: Alex Clark (PIL Fork Author)
+Author-email: aclark@python-pillow.org
+License: HPND
+Location: d:\pro\py\anaconda\lib\site-packages
+Requires:
+Required-by: scikit-image, matplotlib, imageio, bokeh

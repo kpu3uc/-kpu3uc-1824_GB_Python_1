@@ -1,0 +1,11 @@
+C:\Users\освобождение>pip install pillow --upgrade
+Requirement already satisfied: pillow in d:\pro\py\anaconda\lib\site-packages (8.2.0)
+Collecting pillow
+  Downloading Pillow-8.3.2-cp38-cp38-win_amd64.whl (3.2 MB)
+     |████████████████████████████████| 3.2 MB 2.2 MB/s
+Installing collected packages: pillow
+  Attempting uninstall: pillow
+    Found existing installation: Pillow 8.2.0
+    Uninstalling Pillow-8.2.0:
+      Successfully uninstalled Pillow-8.2.0
+Successfully installed pillow-8.3.2

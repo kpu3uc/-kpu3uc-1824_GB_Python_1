@@ -1,0 +1,6 @@
+(base) C:\Users\освобождение>deactivate
+DeprecationWarning: 'deactivate' is deprecated. Use 'conda deactivate'.
+
+(base) C:\Users\освобождение>conda.bat deactivate
+
+C:\Users\освобождение>

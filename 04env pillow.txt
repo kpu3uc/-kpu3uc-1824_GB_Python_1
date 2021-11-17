@@ -1,0 +1,8 @@
+(base) C:\Users\освобождение>pip install pillow==7.1.1
+Collecting pillow==7.1.1
+  Downloading Pillow-7.1.1-cp38-cp38-win_amd64.whl (2.0 MB)
+     |████████████████████████████████| 2.0 MB 3.3 MB/s
+Installing collected packages: pillow
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+scikit-image 0.18.1 requires pillow!=7.1.0,!=7.1.1,>=4.3.0, but you have pillow 7.1.1 which is incompatible.
+Successfully installed pillow-7.1.1
