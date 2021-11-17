@@ -1,0 +1,4 @@
+calc_cube(arg 5: <class 'int'>, )
+тип значения функции: <class 'int'>
+multi_args(arg 3: <class 'int'>, arg 4: <class 'int'>, kwarg 10: <class 'int'>, )
+тип значения функции: <class 'int'>
